@@ -62,7 +62,13 @@ There are 4 interfaces provided by `pngparser.h`. In the source code of `size.c`
 
 ### 7. How long did you run AFL for? If you run it for twice as long, do you expect to find twice as many bug? Why?
 
+I run the AFL for 1 hour. The exact time is 1hour 6 minutes 17 seconds. And the AFL found 49 unique crashes in that time.
 
+However, the speed of finding bugs is not directly proportional to time. It does not represent a linear relationship. Unique crashes increase dramatically in the beginning when many paths are not explored, but over time, many test cases are less likely to find unique crashes because they are more likely to move to the point where the crash occur already. The graph of unique crash relative to time seems to take the form of a log function graph.
+
+Therefore, running AFL twice as long will not detect twice as many bugs.
+
+<img src="/Users/soogeunpark/Desktop/Courses/2022-1st/computer_security/HWs/HW2/reports/imgs/chart.png" alt="chart" style="zoom:22%;" />
 
 
 
