@@ -4,9 +4,19 @@
 
 ### 2. Why did we give you exactly TWO seeds for fuzzing?
 
+속도 때문. 
+
+같은 input을 2개 넣어줌으로써 올바른 형태의 input에 더 유사한 형태의 input을 생성할 확률을 높임.
+
 
 
 ### 3. Why did you have to use `afl-gcc` to compile the source (and not e.g. ordinary gcc)?
+
+>This  is  a  helper  application  which  serves  as a drop-in replacement for gcc, used to recompile third-party code with the required runtime instrumentation for afl-fuzz.
+>
+>A common pattern would be to use this with the CC environment variable.
+
+This is description of `afl-gcc`, provided by [ubuntu manual](http://manpages.ubuntu.com/manpages/bionic/man1/afl-gcc.1.html). In the binary file which is compiled by `gcc`, there is no code for check the code coverage. So, `afl-fuzz` has trouble in generating inputs, and cannot test that file. Therefore, AFL provided the 'afl-gcc' compiler tool, allowing to compile into binary files, which is testable for `afl-fuzz`.
 
 
 
