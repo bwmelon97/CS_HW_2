@@ -711,6 +711,11 @@ error_noinput:
 
   if (current_chunk) {
     if (current_chunk->chunk_data) {
+      // Bug 3
+      // current_chunk의 chunk_data가 read_png 함수에서 free 되었을 때,
+      // chunk_data는 접근할 수 없는 address 값을 가지게 됨 (double free)
+      // 이를 해결하기 위해, NULL로 지정해주어서 segmentation fault를 방지
+      current_chunk->chunk_data = NULL;
       free(current_chunk->chunk_data);
     }
     free(current_chunk);
