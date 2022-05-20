@@ -699,7 +699,9 @@ success:
   if (ihdr_chunk)
     free(ihdr_chunk);
 
-  return 0;
+  // Bug 1
+  // success 되었을 때, 0을 리턴해주어야 size.c에서 return 1로 종료되지 않고, 정상 기능을 수행한다.
+  return 1;
 error:
   if (input)
     fclose(input);
@@ -720,7 +722,10 @@ error_noinput:
   if (ihdr_chunk)
     free(ihdr_chunk);
 
-  return 1;
+  // Bug 2
+  // error일 때, 0을 리턴해야 size.c에서 return 1로 종료를 하게 되고,
+  // 이후 printf 문이 실행되지 않으므로, segmentation fault를 방지할 수 있다. 
+  return 0;
 }
 
 // Store a valid file signature
