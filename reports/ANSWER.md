@@ -42,7 +42,7 @@ This is description of `afl-gcc`, provided by [ubuntu manual](http://manpages.ub
 
 ### 4. How many crashes in total did AFL produce? How many unique crashes?
 
-
+The total number crashes is **8.09 Million**, and the number of the unique crashes is **49**.
 
 
 
