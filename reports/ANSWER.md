@@ -48,7 +48,11 @@ The total number crashes is **8.09 Million**, and the number of the unique crash
 
 ### 5. Why are hangs counted as bugs in AFL? Which type of attack can they be used for?
 
+>hangs/ - unique test cases that cause the tested program to time out.
 
+This is the definition of `hang` from [AFL document](https://github.com/google/AFL). 
+
+If there is a loop that takes an unusually long time to run a program, it's likely to be deadlocked before the program runs normally and exits. Therefore, the test case, which takes such a long time to execute, is classified by hang, and this is mainly due to the iteration error bug. They attack that causes memory leak.
 
 
 
