@@ -700,7 +700,7 @@ success:
     free(ihdr_chunk);
 
   // Bug 1
-  // success 되었을 때, 0을 리턴해주어야 size.c에서 return 1로 종료되지 않고, 정상 기능을 수행한다.
+  // success 되었을 때, 1을 리턴해주어야 size.c에서 return 1로 종료되지 않고, 정상 기능을 수행한다.
   return 1;
 error:
   if (input)
